@@ -1,0 +1,72 @@
+# Welcome to Mago!
+# For full documentation, see https://mago.carthage.software/tools/overview
+php-version = "8.5.0"
+
+[source]
+paths = ["src"]
+includes = ["vendor"]
+excludes = []
+
+[formatter]
+print-width = 120
+tab-width = 4
+use-tabs = false
+
+[linter]
+integrations = []
+
+[linter.rules]
+ambiguous-function-call = { enabled = false }
+assert-description = { enabled = false }
+class-name = { psr = false }
+cyclomatic-complexity = { enabled = false, level = "warning" }
+excessive-parameter-list = { enabled = false }
+halstead = { enabled = false, level = "warning" }
+interface-name = { enabled = false }
+kan-defect = { enabled = false, level = "warning" }
+literal-named-argument = { enabled = false }
+no-boolean-flag-parameter = { enabled = false }
+no-else-clause = { enabled = false }
+prefer-early-continue = { enabled = false }
+too-many-methods = { enabled = false }
+
+[analyzer]
+excludes = ["src/Micro", "src/Rectangular", "src/Rendering"]
+find-unused-expressions = true
+find-unused-definitions = true
+analyze-dead-code = true
+check-throws = false
+check-missing-override = false
+find-unused-parameters = true
+check-missing-type-hints = true
+check-closure-missing-type-hints = true
+check-arrow-function-missing-type-hints = true
+
+strict-list-index-checks = false
+no-boolean-literal-comparison = true
+
+allow-possibly-undefined-array-keys = true
+trust-existence-checks = false
+
+[guard.perimeter.layers]
+imagick = ["ImagickPixel"]
+
+[[guard.perimeter.rules]]
+namespace = "Dllobell\\Qr\\Core"
+permit = ["@php", "Dllobell\\Qr\\Core\\"]
+
+[[guard.perimeter.rules]]
+namespace = "Dllobell\\Qr\\Standard"
+permit = ["@php", "Dllobell\\Qr\\Standard\\", "Dllobell\\Qr\\Core\\"]
+
+[[guard.perimeter.rules]]
+namespace = "Dllobell\\Qr\\Micro"
+permit = ["@php", "Dllobell\\Qr\\Micro\\", "Dllobell\\Qr\\Core\\"]
+
+[[guard.perimeter.rules]]
+namespace = "Dllobell\\Qr\\Rectangular"
+permit = ["@php", "Dllobell\\Qr\\Rectangular\\", "Dllobell\\Qr\\Core\\"]
+
+[[guard.perimeter.rules]]
+namespace = "Dllobell\\Qr\\Rendering"
+permit = ["@php", "Dllobell\\Qr\\Rendering\\", "Dllobell\\Qr\\Core\\", "@layer:imagick"]

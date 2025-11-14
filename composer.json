@@ -1,0 +1,70 @@
+{
+    "name": "dllobell/qr",
+    "description": "Lightweight, framework-agnostic QR code generation system for PHP",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "qr"
+    ],
+    "authors": [
+        {
+            "name": "David Llobell",
+            "email": "dllobellmoya@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/dllobell/qr",
+    "require": {
+        "php": "^8.5",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "carthage-software/mago": "^1.0",
+        "eolica/coding-standard": "^2.0",
+        "laravel/pao": "^1.1",
+        "pestphp/pest": "^4.0",
+        "phpstan/phpstan": "^2.0",
+        "rector/rector": "^2.0",
+        "symfony/var-dumper": "^8.0"
+    },
+    "suggest": {
+        "ext-gd": "To render QR codes as images",
+        "ext-imagick": "To render QR codes as images"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dllobell\\Qr\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dllobell\\Qr\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "carthage-software/mago": true
+        }
+    },
+    "scripts": {
+        "lint": [
+            "ecs check"
+        ],
+        "lint-fix": [
+            "ecs check --fix"
+        ],
+        "analyse": [
+            "phpstan analyse"
+        ],
+        "test": [
+            "pest --colors=always --parallel"
+        ],
+        "refactor": [
+            "rector process"
+        ]
+    }
+}
